@@ -1,0 +1,26 @@
+{
+  "name": "jz-playground",
+  "version": "0.0.1",
+  "description": "Collect my knock-off libraries",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "async": "babel async -d async-dst --presets es2015 --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zry656565/Playground.git"
+  },
+  "author": "JerryZou",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zry656565/Playground/issues"
+  },
+  "homepage": "https://github.com/zry656565/Playground#readme",
+  "devDependencies": {
+    "babel-cli": "^6.3.17"
+  },
+  "babel": {
+    "presets": ["es2015"]
+  }
+}
