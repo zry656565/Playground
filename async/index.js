@@ -10,21 +10,20 @@ export let async = {
     if (doneCallback) tasks.push(doneCallback)
     
     doneCallback = tasks[tasks.length - 1]
-    
-    tasks.map(function(task, i, tasks) {
-      return function(error, ...args) {
-        console.log(args)
-        if (error) {
-          doneCallback(error)
-        } else {
-          args.push(tasks[i + 1])
-          task.apply(null, args)
+
+    for (let i = tasks.length - 1; i >= 0; i--) {
+      (function (task, i) {
+        tasks[i] = function (error, ...args) {
+          if (error || !tasks[i + 1]) {
+            doneCallback.apply(null, [error].concat(args))
+          } else {
+            args.push(tasks[i + 1])
+            task.apply(null, args)
+          }
         }
-      }
-    })
-    
-    console.log(tasks[0].toString())
-    
+      } (tasks[i], i))
+    }
+
     tasks[0].call(null)
   }
 }

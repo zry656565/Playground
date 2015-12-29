@@ -18,9 +18,12 @@
   },
   "homepage": "https://github.com/zry656565/Playground#readme",
   "devDependencies": {
-    "babel-cli": "^6.3.17"
+    "babel-cli": "^6.3.17",
+    "babel-preset-es2015": "^6.3.13"
   },
   "babel": {
-    "presets": ["es2015"]
+    "presets": [
+      "es2015"
+    ]
   }
 }
