@@ -1,0 +1,8 @@
+# node
+node_modules
+
+# visual studio code
+.vscode
+
+# build
+*-dst
