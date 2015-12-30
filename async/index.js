@@ -1,12 +1,14 @@
 let _ = {
   isArray(obj) {
-    return Object.prototype.toString(obj) == '[object Array]'
+    return Object.prototype.toString.call(obj) == '[object Array]'
   }
 }
 
 export let async = {
   waterfall(tasks, doneCallback) {
-    if (_.isArray(tasks)) return null
+    if (!_.isArray(tasks)) {
+      return doneCallback && doneCallback(new Error('First argument to waterfall must be an array of functions'))
+    }
     if (doneCallback) tasks.push(doneCallback)
     
     doneCallback = tasks[tasks.length - 1]
