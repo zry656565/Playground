@@ -94,6 +94,7 @@ describe('waterfall', function() {
     
     it('multiple callback calls', function(done) {
       var call_order = [];
+      var times = 0;
       var arr = [
         function(callback){
           call_order.push(1)
@@ -111,8 +112,7 @@ describe('waterfall', function() {
         },
         function(/*arg4*/){
           call_order.push(4)
-          arr[3] = function(){
-            call_order.push(4)
+          if (++times >= 2) {
             expect(call_order).to.eql([1,2,2,3,3,4,4])
             done()
           }
